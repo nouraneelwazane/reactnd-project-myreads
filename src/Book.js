@@ -8,12 +8,11 @@ class Book extends Component {
     }*/
     render(){
         const { details } = this.props
-        console.log(details.id);
         return (
             <li key={details.id} >
                 <div className="book">
                     <div className="book-top">
-                        <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${details.image})` }}></div>
+                        <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${details.previewLink})` }}></div>
                         <div className="book-shelf-changer">
                             <select>
                                 <option value="move" disabled>Move to...</option>
