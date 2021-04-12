@@ -8,7 +8,7 @@ class BookShelf extends Component {
         shelf: PropTypes.string.isRequired
     }
     render() {
-        const { shelf, books } = this.props
+        const { shelf, books, changeBookShelf } = this.props
         const shelfWithNoWhiteSpace = shelf.replace(/\s/g, "");
         const displayShelfBooks =
             books.filter((b) => (
@@ -22,7 +22,7 @@ class BookShelf extends Component {
                     <ol className="books-grid">
                         {
                             displayShelfBooks.map((book) =>(
-                                <Book key={book.id} details={book} />
+                                <Book key={book.id} details={book} changeBookShelf={changeBookShelf}/>
                             ))
                         }
                     </ol>

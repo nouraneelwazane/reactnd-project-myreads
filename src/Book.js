@@ -1,20 +1,27 @@
 import React, { Component } from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 class Book extends Component {
-    /*static propTypes = {
-        details: PropTypes.isRequired,
-        onDeleteContact: PropTypes.func.isRequired,
-    }*/
+    static propTypes = {
+        details: PropTypes.object.isRequired,
+        changeBookShelf: PropTypes.func.isRequired,
+    }
+    handleSelect = (e) => {
+        //e.preventDefault();
+
+        if (this.props.changeBookShelf) {
+            this.props.changeBookShelf(this.props.details,e.target.value);
+        }
+    }
     render(){
-        const { details } = this.props
+        const { details} = this.props
         return (
-            <li key={details.id} >
+            <li >
                 <div className="book">
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${details.previewLink})` }}></div>
                         <div className="book-shelf-changer">
-                            <select>
+                            <select value={details.shelf} onChange={this.handleSelect}>
                                 <option value="move" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
