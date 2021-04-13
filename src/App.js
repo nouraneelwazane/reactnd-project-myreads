@@ -37,7 +37,7 @@ class BooksApp extends React.Component {
               <BooksList changeBookShelf={this.changeBookShelf} books={this.state.books}/>
           )} />
           <Route exact path='/search' render={() => (
-              <SearchForBook  changeBookShelf={this.changeBookShelf} />
+              <SearchForBook  changeBookShelf={this.changeBookShelf} myBooks={this.state.books}/>
           )} />
       </div>
     )

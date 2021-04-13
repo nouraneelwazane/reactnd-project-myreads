@@ -54,7 +54,7 @@ class SearchForBook extends Component {
          {
           this.state.books &&
           this.state.books.map((book) =>(
-              <Book key={book.id} details={book} changeBookShelf={changeBookShelf}/>
+              <Book myBooks={this.props.myBooks} key={book.id} details={book} changeBookShelf={changeBookShelf}/>
           ))
          }
         </ol>

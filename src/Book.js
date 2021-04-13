@@ -14,11 +14,27 @@ class Book extends Component {
         }
     }
     render(){
-        const { details} = this.props;
+        const { details, myBooks} = this.props;
         const thumbnail =
             details.imageLinks && details.imageLinks.thumbnail ? details.imageLinks.thumbnail : '';
         const authors = details.authors ? details.authors: [];
-        const shelf = details.shelf ? details.shelf : 'none';
+
+        const getBookShelf = function (){
+            if (myBooks){
+                const lookForShelf = myBooks.find(element => element.id === details.id);
+                if (typeof lookForShelf === 'undefined')
+                {
+                    return 'none';
+                }
+                else {
+                    return lookForShelf.shelf;
+                }
+            }
+            else{
+                return details.shelf;
+            }
+        }
+
 
         return (
             <li >
@@ -26,7 +42,7 @@ class Book extends Component {
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${thumbnail})` }}></div>
                         <div className="book-shelf-changer">
-                            <select value={shelf} onChange={this.handleSelect}>
+                            <select value={getBookShelf()} onChange={this.handleSelect}>
                                 <option value="move" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
