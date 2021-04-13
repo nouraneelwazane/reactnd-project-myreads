@@ -17,13 +17,16 @@ class Book extends Component {
         const { details} = this.props;
         const thumbnail =
             details.imageLinks && details.imageLinks.thumbnail ? details.imageLinks.thumbnail : '';
+        const authors = details.authors ? details.authors: [];
+        const shelf = details.shelf ? details.shelf : 'none';
+
         return (
             <li >
                 <div className="book">
                     <div className="book-top">
                         <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${thumbnail})` }}></div>
                         <div className="book-shelf-changer">
-                            <select value={details.shelf} onChange={this.handleSelect}>
+                            <select value={shelf} onChange={this.handleSelect}>
                                 <option value="move" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
@@ -34,7 +37,7 @@ class Book extends Component {
                     </div>
                     <div className="book-title">{details.title}</div>
                     {
-                        details.authors.map((author) => (
+                        authors.map((author) => (
                             <div className="book-authors" key={author}>{author}</div>
                         ))
                     }
