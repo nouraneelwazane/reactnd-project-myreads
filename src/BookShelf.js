@@ -10,7 +10,7 @@ class BookShelf extends Component {
     render() {
         const { shelf, books, changeBookShelf } = this.props
         const shelfWithNoWhiteSpace = shelf.replace(/\s/g, "");
-        const displayShelfBooks =
+        const displayShelfBooks = //get the books corresponding to the current shelf only
             books.filter((b) => (
                 b.shelf.toLowerCase() === shelfWithNoWhiteSpace.toLowerCase()
             ))

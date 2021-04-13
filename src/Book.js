@@ -20,18 +20,18 @@ class Book extends Component {
         const authors = details.authors ? details.authors: [];
 
         const getBookShelf = function (){
-            if (myBooks){
-                const lookForShelf = myBooks.find(element => element.id === details.id);
-                if (typeof lookForShelf === 'undefined')
+            if (myBooks){ //if this book is in the search page
+                const lookForShelf = myBooks.find(element => element.id === details.id); //see if it belongs to a shelf
+                if (typeof lookForShelf === 'undefined') // if it does not assign its select value to none
                 {
                     return 'none';
                 }
                 else {
-                    return lookForShelf.shelf;
+                    return lookForShelf.shelf; //if it does belong to a shelf assign its select value the correct shelf
                 }
             }
             else{
-                return details.shelf;
+                return details.shelf; //if this book is in the book list page
             }
         }
 

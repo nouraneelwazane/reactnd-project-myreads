@@ -16,15 +16,15 @@ class BooksList extends React.Component {
                 </div>
                 <div className="list-books-content">
                     <div>
-                        <BookShelf changeBookShelf={this.props.changeBookShelf} books={this.props.books} shelf='Want to Read' />
                         <BookShelf changeBookShelf={this.props.changeBookShelf} books={this.props.books} shelf='Currently Reading' />
                         <BookShelf changeBookShelf={this.props.changeBookShelf} books={this.props.books} shelf='Read' />
+                        <BookShelf changeBookShelf={this.props.changeBookShelf} books={this.props.books} shelf='Want to Read' />
                     </div>
                 </div>
                 <Link
                     className='open-search'
                     to='/search'>
-                    <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+                    <button>Add a book</button>
                 </Link>
             </div>
         )
