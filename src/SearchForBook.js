@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import * as BooksAPI from "./BooksAPI";
 import Book from "./Book";
+import { Link } from 'react-router-dom';
 
 class SearchForBook extends Component {
 
@@ -40,7 +40,11 @@ class SearchForBook extends Component {
   return(
       <div className="search-books">
        <div className="search-books-bar">
-        <button className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</button>
+           <Link
+               className='open-search'
+               to='/'>
+               <button className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</button>
+           </Link>
         <div className="search-books-input-wrapper">
          <input type="text" onChange={(event) => this.searchForBook(event.target.value)} placeholder="Search by title or author"/>
         </div>
