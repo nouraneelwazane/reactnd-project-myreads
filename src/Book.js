@@ -14,12 +14,14 @@ class Book extends Component {
         }
     }
     render(){
-        const { details} = this.props
+        const { details} = this.props;
+        const thumbnail =
+            details.imageLinks && details.imageLinks.thumbnail ? details.imageLinks.thumbnail : '';
         return (
             <li >
                 <div className="book">
                     <div className="book-top">
-                        <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${details.previewLink})` }}></div>
+                        <div className="book-cover" style={{ width: 128, height: 192, backgroundImage: `url(${thumbnail})` }}></div>
                         <div className="book-shelf-changer">
                             <select value={details.shelf} onChange={this.handleSelect}>
                                 <option value="move" disabled>Move to...</option>
