@@ -13,9 +13,10 @@ class SearchForBook extends Component {
   if (query){
    BooksAPI.search(query)
        .then((result) => {
+           console.log(result.error);
+           console.log(result);
         if(result.length>0)
         {
-         console.log(result);
          this.setState(() => ({
           books: result
          }))
@@ -58,7 +59,7 @@ class SearchForBook extends Component {
        <div className="search-books-results">
         <ol className="books-grid">
          {
-          this.state.books !== null &&
+          //this.state.books &&
           this.state.books.map((book) =>(
               <Book key={book.id} details={book} changeBookShelf={changeBookShelf}/>
           ))
